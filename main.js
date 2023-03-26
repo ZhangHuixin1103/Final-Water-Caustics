@@ -666,7 +666,6 @@ function initObjs() {
 
     //objRaw = loadObj("obj/apple.obj");
     objRaw = loadObj("obj/duck.obj");
-    //objRaw = loadObj("obj/rex.obj");
 
     objRaw.addCallback(function () {
         objModel = new createModel(gl, objRaw);
