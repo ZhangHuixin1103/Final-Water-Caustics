@@ -12,7 +12,7 @@ Render **water caustics** at interractive framerates using **WebGL** with JavaSc
   - Background: skybox
   - Water: random / interactive waves
   - Walls and Bottom: tiles
-  - Object: sphere / apple / duck / T-Rex
+  - Object: sphere / apple / duck
   - Caustics
 
 ## Demo
