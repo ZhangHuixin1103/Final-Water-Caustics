@@ -193,8 +193,9 @@ window.onload = function () {
     gui.add(parameters, 'Caustic');
     gui.add(parameters, 'Wind');
     gui.add(parameters, 'Rain');
-    gui.add(parameters, 'Object', ['sphere', 'duck']);
+    gui.add(parameters, 'Skybox', ['classic', 'green', 'blue', 'yellow']);
     gui.add(parameters, 'Pool_Pattern', ['pearl', 'marble', 'white brick', 'blue brick', 'red brick']);
+    gui.add(parameters, 'Object', ['sphere', 'duck']);
     gui.add(parameters, 'Sphere_Radius', 0.1, 0.5);
     gui.add(parameters, 'God_rays');
     var f1 = gui.addFolder('Debug Image');
@@ -206,14 +207,15 @@ window.onload = function () {
 
 var parameters = new function () {
     this.Caustic = true;
-    this.Object = "duck";
-    this.Pool_Pattern = "blue brick";
-    this.Sphere_Radius = 0.25;
     this.Wind = true;
     this.Rain = false;
+    this.Skybox = "classic";
+    this.Pool_Pattern = "pearl";
+    this.Object = "sphere";
+    this.Sphere_Radius = 0.25;
+    this.God_rays = false;
     this.Depth_From_Light = false;
     this.Depth_From_Camera = false;
-    this.God_rays = false;
     this.Reflection_Texture = false;
     this.Draw_Obj_Reflection = false;
 }
@@ -589,11 +591,36 @@ function initCustomeTexture(texture, format, filter, type, width, height, data, 
 function initSkyBoxTexture() {
     var ct = 0;
     var img = new Array(6);
-    var urls = [
-        "img/skybox/3-right.jpg", "img/skybox/3-left.jpg", 
-        "img/skybox/3-up.jpg", "img/skybox/3-down.jpg", 
-        "img/skybox/3-back.jpg", "img/skybox/3-front.jpg"
-    ];
+
+    if (parameters.Skybox == "classic") {
+        var urls = [
+            "img/skybox/1-right.jpg", "img/skybox/1-left.jpg",
+            "img/skybox/1-up.jpg", "img/skybox/1-down.jpg",
+            "img/skybox/1-back.jpg", "img/skybox/1-front.jpg"
+        ];
+    }
+    if (parameters.Skybox == "green") {
+        var urls = [
+            "img/skybox/2-right.jpg", "img/skybox/2-left.jpg",
+            "img/skybox/2-up.jpg", "img/skybox/2-down.jpg",
+            "img/skybox/2-back.jpg", "img/skybox/2-front.jpg"
+        ];
+    }
+    if (parameters.Skybox == "blue") {
+        var urls = [
+            "img/skybox/3-right.jpg", "img/skybox/3-left.jpg",
+            "img/skybox/3-up.jpg", "img/skybox/3-down.jpg",
+            "img/skybox/3-back.jpg", "img/skybox/3-front.jpg"
+        ];
+    }
+    if (parameters.Skybox == "yellow") {
+        var urls = [
+            "img/skybox/4-right.jpg", "img/skybox/4-left.jpg",
+            "img/skybox/4-up.jpg", "img/skybox/4-down.jpg",
+            "img/skybox/4-back.jpg", "img/skybox/4-front.jpg"
+        ];
+    }
+
     for (var i = 0; i < 6; i++) {
         img[i] = new Image();
         img[i].onload = function () {
@@ -699,7 +726,7 @@ function initObjs() {
             }
         }
 
-        //tmp.numIndices = sum + cubePool.numIndices;
+        // tmp.numIndices = sum + cubePool.numIndices;
         tmp.numIndices = tmp.indices.length;
         initBuffers(depthModel, tmp);
     });
@@ -965,7 +992,7 @@ function drawScene() {
         drawQuad(finaldepthTexture, 0);
         // drawQuad(godrayTextureA, 0);   // this is the debug draw ctmp for depth texture
         // drawQuad(godrayTextureA, 1);   // this is the debug draw ctmp for depth texture
-        //drawGodrayPass1();
+        // drawGodrayPass1();
     }
     else if (parameters.Depth_From_Camera == true) {
         drawQuad(godrayTextureB, 1);
@@ -1090,8 +1117,8 @@ function drawSkyBox() {
         gl.drawElements(gl.TRIANGLES, sky.IBO.numItems, gl.UNSIGNED_SHORT, 0);
 
         gl.disableVertexAttribArray(skyProg.vertexPositionAttribute);
-        //gl.bindBuffer(gl.ARRAY_BUFFER, null);
-        //gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
+        // gl.bindBuffer(gl.ARRAY_BUFFER, null);
+        // gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
     }
 }
 
@@ -1116,7 +1143,7 @@ function drawObj(model) {
 
         setMatrixUniforms(objProg);
         gl.uniform3fv(objProg.centerUniform, model.center);
-        //gl.uniform1f(objProg.RadiusUniform, model.radius);
+        // gl.uniform1f(objProg.RadiusUniform, model.radius);
         gl.uniform3fv(objProg.sphereCenterUniform, sphere.center);
         gl.uniform1f(objProg.sphereRadiusUniform, sphere.radius);
         gl.uniform1i(objProg.isSphereUniform, 1);
