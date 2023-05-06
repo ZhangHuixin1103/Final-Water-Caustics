@@ -210,7 +210,7 @@ var parameters = new function () {
     this.Wind = true;
     this.Rain = false;
     this.Skybox = "classic";
-    this.Pool_Pattern = "blue brick";
+    this.Pool_Pattern = "red brick";
     this.Object = "duck";
     this.Sphere_Radius = 0.25;
     this.God_rays = false;
@@ -613,29 +613,27 @@ var urls4 = [
 ];
 
 function changeSky() {
-    if (skyboxInput1.checked) { urls = urls1; }
-    else if (skyboxInput2.checked) { urls = urls2; }
-    else if (skyboxInput3.checked) { urls = urls3; }
-    else if (skyboxInput4.checked) { urls = urls4; }
+    if (skyboxInput1.checked) {
+        urls = urls1;
+        loadSky();
+    }
+    else if (skyboxInput2.checked) {
+        urls = urls2;
+        loadSky();
+    }
+    else if (skyboxInput3.checked) {
+        urls = urls3;
+        loadSky();
+    }
+    else if (skyboxInput4.checked) {
+        urls = urls4;
+        loadSky();
+    }
 }
 
-function initSkyBoxTexture() {
+function loadSky() {
     var ct = 0;
     var img = new Array(6);
-
-    // urls = urls3;
-    if (parameters.Skybox == "classic") {
-        urls = urls1;
-    }
-    if (parameters.Skybox == "green") {
-        urls = urls2;
-    }
-    if (parameters.Skybox == "blue") {
-        urls = urls3;
-    }
-    if (parameters.Skybox == "yellow") {
-        urls = urls4;
-    }
 
     for (var i = 0; i < 6; i++) {
         img[i] = new Image();
@@ -660,18 +658,36 @@ function initSkyBoxTexture() {
             }
         }
 
-        skyboxInput1 = document.getElementById("skybox-input-1");
-        skyboxInput1.onchange = changeSky;
-        skyboxInput2 = document.getElementById("skybox-input-2");
-        skyboxInput2.onchange = changeSky;
-        skyboxInput3 = document.getElementById("skybox-input-3");
-        skyboxInput3.onchange = changeSky;
-        skyboxInput4 = document.getElementById("skybox-input-4");
-        skyboxInput4.onchange = changeSky;
-
         console.log("loading skybox texture: " + urls[i]);
         img[i].src = urls[i];
     }
+}
+
+function initSkyBoxTexture() {
+    // urls = urls3;
+    if (parameters.Skybox == "classic") {
+        urls = urls1;
+    }
+    if (parameters.Skybox == "green") {
+        urls = urls2;
+    }
+    if (parameters.Skybox == "blue") {
+        urls = urls3;
+    }
+    if (parameters.Skybox == "yellow") {
+        urls = urls4;
+    }
+
+    loadSky();
+
+    skyboxInput1 = document.getElementById("skybox-input-1");
+    skyboxInput1.onchange = changeSky;
+    skyboxInput2 = document.getElementById("skybox-input-2");
+    skyboxInput2.onchange = changeSky;
+    skyboxInput3 = document.getElementById("skybox-input-3");
+    skyboxInput3.onchange = changeSky;
+    skyboxInput4 = document.getElementById("skybox-input-4");
+    skyboxInput4.onchange = changeSky;
 }
 
 function mvPushMatrix() {
