@@ -717,8 +717,8 @@ function initBuffers(model, primitive) {
 
 function initObjs() {
 
-    objRaw = loadObj("img/obj/apple.obj");
-    // objRaw = loadObj("img/obj/duck.obj");
+    // objRaw = loadObj("img/obj/apple.obj");
+    objRaw = loadObj("img/obj/duck.obj");
 
     objRaw.addCallback(function () {
         objModel = new createModel(gl, objRaw);
