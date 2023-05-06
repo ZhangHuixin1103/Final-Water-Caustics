@@ -909,6 +909,15 @@ function drawScene() {
         currentPoolPattern = "red brick";
     }
 
+    let textureInput;
+    textureInput = document.getElementById("texture-input");
+    textureInput.onchange = () => {
+        if (textureInput.files.length === 1 && textureInput.files[0].type === "image/jpeg") {
+            let url = URL.createObjectURL(textureInput.files[0]);
+            initTexture(pool.Texture, url);
+        }
+    };
+
     var lightView = mat4.lookAt(lightInvDir, vec3.create([0, 0, 0]), vec3.create([0, 1, 0])); // from the point of view of the light
     lightProj = mat4.ortho(-2, 2, -2, 2, -4, 4);  // axis-aligned box (-10,10),(-10,10),(-10,20) on the X, Y and Z axes
     mat4.identity(lightMatrix);
@@ -1890,12 +1899,10 @@ function webGLStart() {
     gradTexture = gl.createTexture();
     godrayTextureA = gl.createTexture();
     godrayTextureB = gl.createTexture();
-
     objTexture = gl.createTexture();
     finaldepthTexture = gl.createTexture();
     finalrenderTexture = gl.createTexture();
     postrenderTexture = gl.createTexture();
-
     reflectTexture = gl.createTexture();
 
     var filter = OES_texture_float_linear ? gl.LINEAR : gl.NEAREST;
