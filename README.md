@@ -15,6 +15,15 @@ Render **water caustics** at interractive framerates using **WebGL** with JavaSc
   - Object: sphere / apple / duck
   - Caustics
 
+## Features
+
+- Reflection
+- Refraction
+- Shadow
+- Caustics
+- Waves
+- Object Interaction
+
 ## Demo
 
 Click this [link](https://zhanghuixin1103.github.io/Final-Water-Caustics/)
