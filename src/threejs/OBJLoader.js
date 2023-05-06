@@ -244,7 +244,7 @@ THREE.OBJLoader.prototype = {
 			}
 		}
 
-		//Add last object
+		// Add last object
 		meshN(undefined, undefined);
 
 		return group;

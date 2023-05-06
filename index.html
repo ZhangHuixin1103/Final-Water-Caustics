@@ -864,7 +864,7 @@
       vec3 Pi = ONE*floor(P)+HALF;  // Integer part,
       vec3 Pf = fract(P);     // Fractional part 
       // Noise contributions from (x=0, y=0), z=0 and z=1
-      float perm00 = get_perm(Pi.xy); //texture2D(uSamplerPerm, Pi.xy).a ;
+      float perm00 = get_perm(Pi.xy); // texture2D(uSamplerPerm, Pi.xy).a;
       float n000 = get_grad(vec2(perm00, Pi.z), Pf);
       float n001 = get_grad(vec2(perm00, Pi.z + ONE), Pf - vec3(0.0, 0.0, 1.0));
       // Noise contributions from (x=0, y=1), z=0 and z=1
