@@ -10183,7 +10183,7 @@ THREE.Geometry.prototype = {
 
 			} else {
 
-				//console.log('Duplicate vertex found. ', i, ' could be using ', verticesMap[key]);
+				// console.log('Duplicate vertex found. ', i, ' could be using ', verticesMap[key]);
 				changes[i] = changes[verticesMap[key]];
 
 			}
@@ -28190,7 +28190,7 @@ THREE.FontUtils = {
 
 				action = outline[i++];
 
-				//console.log( action );
+				// console.log( action );
 
 				switch (action) {
 
@@ -28638,7 +28638,7 @@ THREE.Curve.prototype.getLengths = function (divisions) {
 		&& (this.cacheArcLengths.length == divisions + 1)
 		&& !this.needsUpdate) {
 
-		//console.log( "cached", this.cacheArcLengths );
+		// console.log( "cached", this.cacheArcLengths );
 		return this.cacheArcLengths;
 
 	}
@@ -28727,7 +28727,7 @@ THREE.Curve.prototype.getUtoTmapping = function (u, distance) {
 
 	i = high;
 
-	//console.log('b' , i, low, high, Date.now()- time);
+	// console.log('b', i, low, high, Date.now() - time);
 
 	if (arcLengths[i] == targetArcLength) {
 
@@ -29615,13 +29615,13 @@ THREE.Path.prototype.getPoints = function (divisions, closedPath) {
 					tx = aX + aRadius * Math.cos(angle);
 					ty = aY + aRadius * Math.sin(angle);
 
-					//console.log('t', t, 'angle', angle, 'tx', tx, 'ty', ty);
+					// console.log('t', t, 'angle', angle, 'tx', tx, 'ty', ty);
 
 					points.push(new THREE.Vector2(tx, ty));
 
 				}
 
-				//console.log(points);
+				// console.log(points);
 
 				break;
 
@@ -29653,13 +29653,13 @@ THREE.Path.prototype.getPoints = function (divisions, closedPath) {
 					tx = aX + xRadius * Math.cos(angle);
 					ty = aY + yRadius * Math.sin(angle);
 
-					//console.log('t', t, 'angle', angle, 'tx', tx, 'ty', ty);
+					// console.log('t', t, 'angle', angle, 'tx', tx, 'ty', ty);
 
 					points.push(new THREE.Vector2(tx, ty));
 
 				}
 
-				//console.log(points);
+				// console.log(points);
 
 				break;
 
@@ -29815,13 +29815,13 @@ THREE.Path.prototype.toShapes = function (isCCW) {
 			if (holesFirst) mainIdx++;
 			newShapeHoles[mainIdx] = [];
 
-			//console.log('cw', i);
+			// console.log('cw', i);
 
 		} else {
 
 			newShapeHoles[mainIdx].push({ h: tmpPath, p: tmpPoints[0] });
 
-			//console.log('ccw', i);
+			// console.log('ccw', i);
 
 		}
 
@@ -29871,7 +29871,7 @@ THREE.Path.prototype.toShapes = function (isCCW) {
 		}
 	}
 
-	//console.log("shape", shapes);
+	// console.log("shape", shapes);
 
 	return shapes;
 
@@ -30329,7 +30329,7 @@ THREE.Shape.Utils = {
 
 		}
 
-		//console.log( "allpoints",allpoints, allpoints.length );
+		// console.log( "allpoints", allpoints, allpoints.length );
 
 		// prepare all points map
 
@@ -30351,7 +30351,7 @@ THREE.Shape.Utils = {
 		var shapeWithoutHoles = removeHoles(contour, holes);
 
 		var triangles = THREE.FontUtils.Triangulate(shapeWithoutHoles, false); // True returns indices for points of spooled shape
-		//console.log( "triangles",triangles, triangles.length );
+		// console.log( "triangles", triangles, triangles.length );
 
 		// check all face vertices against all points map
 
@@ -32500,9 +32500,9 @@ THREE.ExtrudeGeometry = function (shapes, options) {
 	// as then front and back sides get smoothed too
 	// should do separate smoothing just for sides
 
-	//this.computeVertexNormals();
+	// this.computeVertexNormals();
 
-	//console.log( "took", ( Date.now() - startTime ) );
+	// console.log( "took", ( Date.now() - startTime ) );
 
 };
 
@@ -33009,7 +33009,7 @@ THREE.ExtrudeGeometry.prototype.addShape = function (shape, options) {
 			ahole = holes[h];
 			sidewalls(ahole, layeroffset);
 
-			//, true
+			// , true
 			layeroffset += ahole.length;
 
 		}
@@ -33027,7 +33027,7 @@ THREE.ExtrudeGeometry.prototype.addShape = function (shape, options) {
 			k = i - 1;
 			if (k < 0) k = contour.length - 1;
 
-			//console.log('b', i,j, i-1, k,vertices.length);
+			// console.log('b', i, j, i-1, k, vertices.length);
 
 			var s = 0, sl = steps + bevelSegments * 2;
 

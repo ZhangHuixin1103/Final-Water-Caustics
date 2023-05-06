@@ -10,7 +10,7 @@ var loadObj = function (filename) {
     var loader = new THREE.OBJLoader();
     var eventlistener = function (object) {
         content = object;
-        console.log("load file: " + filename);
+        console.log("load obj file: " + filename);
         console.log("children count: " + object.children.length);
 
         // Start parse vertices, normals, indices, and texcoords
@@ -23,7 +23,7 @@ var loadObj = function (filename) {
                 var normals = [];
                 var indices = [];
                 var texcoords = [];
-                console.log("start traverse OBJ");
+                console.log("start traversing OBJ");
                 if (numFaces != 0) {
                     console.log("extracting faces");
                     // Array of texture coordinates of 1st layer texture 

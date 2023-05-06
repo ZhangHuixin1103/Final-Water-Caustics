@@ -240,7 +240,7 @@ THREE.OBJLoader.prototype = {
 			} else if (/^s /.test(line)) {
 				// Smooth shading
 			} else {
-				console.log("THREE.OBJMTLLoader: Unhandled line " + line);
+				console.log("THREE.OBJMTLLoader: Unhandled line, " + line);
 			}
 		}
 

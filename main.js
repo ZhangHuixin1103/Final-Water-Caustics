@@ -221,7 +221,7 @@ var parameters = new function () {
 }
 
 function initShaders() {
-    //-----------------------pool------------------------------
+    //------------------------------pool------------------------------
     poolProg = gl.createProgram();
     gl.attachShader(poolProg, getShader(gl, "pool-vs"));
     gl.attachShader(poolProg, getShader(gl, "pool-fs"));
@@ -250,7 +250,7 @@ function initShaders() {
     poolProg.causticOnUniform = gl.getUniformLocation(poolProg, "uCausticOn");
     poolProg.isSphereUniform = gl.getUniformLocation(poolProg, "uIsSphere");
 
-    //-----------------------sphere------------------------------
+    //------------------------------sphere------------------------------
     objProg = gl.createProgram();
     gl.attachShader(objProg, getShader(gl, "obj-vs"));
     gl.attachShader(objProg, getShader(gl, "obj-fs"));
@@ -278,7 +278,7 @@ function initShaders() {
     // objProg.diffuseColorUniform = gl.getUniformLocation(objProg, "uDiffuseColor");
     // objProg.samplerTileUniform = gl.getUniformLocation(objProg, "uSampler");
 
-    //-----------------------sky------------------------------
+    //------------------------------sky------------------------------
     skyProg = gl.createProgram();
     gl.attachShader(skyProg, getShader(gl, "sky-vs"));
     gl.attachShader(skyProg, getShader(gl, "sky-fs"));
@@ -294,7 +294,7 @@ function initShaders() {
     skyProg.mvMatrixUniform = gl.getUniformLocation(skyProg, "uMVMatrix");
     skyProg.samplerSkyUniform = gl.getUniformLocation(skyProg, "uSamplerSky");
 
-    //-----------------------water---------------------------------
+    //------------------------------water------------------------------
     for (var i = 0; i < 2; i++) {
 
         waterProg[i] = gl.createProgram();
@@ -330,7 +330,7 @@ function initShaders() {
 
     }
 
-    //-----------------------height------------------------------------------------
+    //------------------------------height------------------------------
     heightProg = gl.createProgram();
     gl.attachShader(heightProg, getShader(gl, "interact-vs"));
     gl.attachShader(heightProg, getShader(gl, "interact-height-fs"));
@@ -347,7 +347,7 @@ function initShaders() {
     heightProg.radiusUniform = gl.getUniformLocation(heightProg, "uRadius");
     heightProg.strengthUniform = gl.getUniformLocation(heightProg, "uStrength");
 
-    //-----------------------caustic------------------------------------------------
+    //------------------------------caustic------------------------------
     causticProg = gl.createProgram();
     gl.attachShader(causticProg, getShader(gl, "caustic-vs"));
     gl.attachShader(causticProg, getShader(gl, "caustic-fs"));
@@ -367,7 +367,7 @@ function initShaders() {
     causticProg.lightMatrixUniform = gl.getUniformLocation(causticProg, "uLightMatrix");
     causticProg.lightProjUniform = gl.getUniformLocation(causticProg, "uLightProj");
 
-    //-----------------------normal------------------------------------------------
+    //------------------------------normal------------------------------
     normalProg = gl.createProgram();
     gl.attachShader(normalProg, getShader(gl, "interact-vs"));
     gl.attachShader(normalProg, getShader(gl, "interact-normal-fs"));
@@ -382,7 +382,7 @@ function initShaders() {
     normalProg.samplerWaterUniform = gl.getUniformLocation(normalProg, "uSamplerWater");
     normalProg.deltaUniform = gl.getUniformLocation(normalProg, "uDelta");
 
-    //-----------------------simulation-----------------------------------------------
+    //------------------------------simulation------------------------------
     simulateProg = gl.createProgram();
     gl.attachShader(simulateProg, getShader(gl, "interact-vs"));
     gl.attachShader(simulateProg, getShader(gl, "interact-simulate-fs"));
@@ -397,7 +397,7 @@ function initShaders() {
     simulateProg.samplerWaterUniform = gl.getUniformLocation(simulateProg, "uSamplerWater");
     simulateProg.deltaUniform = gl.getUniformLocation(simulateProg, "uDelta");
 
-    //---------------------sphere interaction---------------------------------------------------
+    //------------------------------sphere interaction------------------------------
     objectProg = gl.createProgram();
     gl.attachShader(objectProg, getShader(gl, "interact-vs"));
     gl.attachShader(objectProg, getShader(gl, "interact-sphere-fs"));
@@ -414,7 +414,7 @@ function initShaders() {
     objectProg.oldCenterUniform = gl.getUniformLocation(objectProg, "uOldCenter");
     objectProg.radiusUniform = gl.getUniformLocation(objectProg, "uRadius");
 
-    //---------------------obj depth map---------------------------------------------------
+    //------------------------------obj depth map------------------------------
     depthProg = gl.createProgram();
     gl.attachShader(depthProg, getShader(gl, "depth-vs"));
     gl.attachShader(depthProg, getShader(gl, "depth-fs"));
@@ -432,7 +432,7 @@ function initShaders() {
     depthProg.centerUniform = gl.getUniformLocation(depthProg, "uCenter");
     depthProg.modeUniform = gl.getUniformLocation(depthProg, "uMode");
 
-    //---------------------perlin noise for wind------------------------------------------------
+    //------------------------------perlin noise for wind------------------------------
     windProg = gl.createProgram();
     gl.attachShader(windProg, getShader(gl, "perlin-vs"));
     gl.attachShader(windProg, getShader(gl, "perlin-fs"));
@@ -449,7 +449,7 @@ function initShaders() {
     windProg.samplerGradUniform = gl.getUniformLocation(windProg, "uSamplerGrad");
     windProg.timeUniform = gl.getUniformLocation(windProg, "uTime");
 
-    //---------------------particle for rain------------------------------------------------
+    //------------------------------particle for rain------------------------------
     rainProg = gl.createProgram();
     gl.attachShader(rainProg, getShader(gl, "rain-vs"));
     gl.attachShader(rainProg, getShader(gl, "rain-fs"));
@@ -464,7 +464,7 @@ function initShaders() {
     rainProg.pMatrixUniform = gl.getUniformLocation(rainProg, "uPMatrix");
     rainProg.mvMatrixUniform = gl.getUniformLocation(rainProg, "uMVMatrix");
 
-    //----------------------quad debug shader----------------------------------------------
+    //------------------------------quad debug shader------------------------------
     quadProg = gl.createProgram();
     gl.attachShader(quadProg, getShader(gl, "quad-vs"));
     gl.attachShader(quadProg, getShader(gl, "quad-fs"));
@@ -480,7 +480,7 @@ function initShaders() {
     quadProg.textureCoordAttribute = gl.getAttribLocation(quadProg, "aTextureCoord");
     quadProg.modeUniform = gl.getUniformLocation(quadProg, "uMode");
 
-    //----------------------god rays----------------------------------------------
+    //------------------------------god rays------------------------------
     godrayProg = gl.createProgram();
     gl.attachShader(godrayProg, getShader(gl, "godray-vs"));
     gl.attachShader(godrayProg, getShader(gl, "godray-fs"));
@@ -499,7 +499,7 @@ function initShaders() {
     godrayProg.samplerInputUniform = gl.getUniformLocation(godrayProg, "uSamplerInput");
     godrayProg.passUniform = gl.getUniformLocation(godrayProg, "uPass");
 
-    //----------------------obj reflection---------------------------------------------
+    //------------------------------obj reflection------------------------------
     reflectProg = gl.createProgram();
     gl.attachShader(reflectProg, getShader(gl, "reflect-vs"));
     gl.attachShader(reflectProg, getShader(gl, "reflect-fs"));
@@ -515,7 +515,7 @@ function initShaders() {
     reflectProg.mvMatrixUniform = gl.getUniformLocation(reflectProg, "uMVMatrix");
     reflectProg.pMatrixUniform = gl.getUniformLocation(reflectProg, "uPMatrix");
 
-    //--------------------post process------------------------------------------------
+    //------------------------------post process------------------------------
     postProg = gl.createProgram();
     gl.attachShader(postProg, getShader(gl, "quad-vs"));
     gl.attachShader(postProg, getShader(gl, "postprocess-fs"));
@@ -554,12 +554,12 @@ function handleLoadedTexture(texture) {
 }
 
 function initTexture(texture, url) {
-    console.log("loading texture: " + url);
     texture.image = new Image();
     texture.image.onload = function () {
         handleLoadedTexture(texture)
     }
 
+    console.log("loading tile texture: " + url);
     texture.image.src = url;
 }
 
@@ -593,32 +593,36 @@ function initSkyBoxTexture() {
     var img = new Array(6);
 
     if (parameters.Skybox == "classic") {
-        var urls = [
+        var urls1 = [
             "img/skybox/1-right.jpg", "img/skybox/1-left.jpg",
             "img/skybox/1-up.jpg", "img/skybox/1-down.jpg",
             "img/skybox/1-back.jpg", "img/skybox/1-front.jpg"
         ];
+        var urls = urls1;
     }
     if (parameters.Skybox == "green") {
-        var urls = [
+        var urls2 = [
             "img/skybox/2-right.jpg", "img/skybox/2-left.jpg",
             "img/skybox/2-up.jpg", "img/skybox/2-down.jpg",
             "img/skybox/2-back.jpg", "img/skybox/2-front.jpg"
         ];
+        var urls = urls2;
     }
     if (parameters.Skybox == "blue") {
-        var urls = [
+        var urls3 = [
             "img/skybox/3-right.jpg", "img/skybox/3-left.jpg",
             "img/skybox/3-up.jpg", "img/skybox/3-down.jpg",
             "img/skybox/3-back.jpg", "img/skybox/3-front.jpg"
         ];
+        var urls = urls3;
     }
     if (parameters.Skybox == "yellow") {
-        var urls = [
+        var urls4 = [
             "img/skybox/4-right.jpg", "img/skybox/4-left.jpg",
             "img/skybox/4-up.jpg", "img/skybox/4-down.jpg",
             "img/skybox/4-back.jpg", "img/skybox/4-front.jpg"
         ];
+        var urls = urls4;
     }
 
     for (var i = 0; i < 6; i++) {
@@ -643,7 +647,8 @@ function initSkyBoxTexture() {
                 gl.generateMipmap(gl.TEXTURE_CUBE_MAP);
             }
         }
-        // console.log("loading skybox texture: " + urls[i]);
+
+        console.log("loading skybox texture: " + urls[i]);
         img[i].src = urls[i];
     }
 }
@@ -767,8 +772,8 @@ function handleMouseMove(event) {
 
     if (mouseLeftDown) {
         duringInterction(newX, newY);
-        //radius += 0.01 * deltaY;
-        //radius = Math.min(Math.max(radius, 2.0), 10.0);
+        // radius += 0.01 * deltaY;
+        // radius = Math.min(Math.max(radius, 2.0), 10.0);
     }
     else {
         azimuth += 0.01 * deltaX;
@@ -1320,7 +1325,7 @@ function drawHeight(x, y, radius, strength) {// TextureA as input, TextureB as o
     // resize viewport
     gl.viewport(0, 0, textureSize, textureSize);
 
-    //-------------------start rendering to texture--------------------------------------
+    //------------------------------start rendering to texture------------------------------
     gl.useProgram(heightProg);
 
     gl.bindBuffer(gl.ARRAY_BUFFER, water.VBO);
@@ -1339,7 +1344,7 @@ function drawHeight(x, y, radius, strength) {// TextureA as input, TextureB as o
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, water.IBO);
     gl.drawElements(gl.TRIANGLES, water.IBO.numItems, gl.UNSIGNED_SHORT, 0);
 
-    //---------------------- after rendering-------------------------------------------
+    //------------------------------after rendering------------------------------
     gl.disableVertexAttribArray(heightProg.vertexPositionAttribute);
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
@@ -1395,7 +1400,7 @@ function drawNormal() {
     // resize viewport
     gl.viewport(0, 0, textureSize, textureSize);
 
-    //-------------------start rendering to texture--------------------------------------
+    //------------------------------start rendering to texture------------------------------
     gl.useProgram(normalProg);
 
     gl.bindBuffer(gl.ARRAY_BUFFER, water.VBO);
@@ -1411,7 +1416,7 @@ function drawNormal() {
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, water.IBO);
     gl.drawElements(gl.TRIANGLES, water.IBO.numItems, gl.UNSIGNED_SHORT, 0);
 
-    //---------------------- after rendering--------------------------------------------
+    //------------------------------after rendering------------------------------
     gl.disableVertexAttribArray(normalProg.vertexPositionAttribute);
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
@@ -1433,7 +1438,7 @@ function drawSimulation() {
     // resize viewport
     gl.viewport(0, 0, textureSize, textureSize);
 
-    //-------------------start rendering to texture--------------------------------------
+    //------------------------------start rendering to texture------------------------------
     gl.useProgram(simulateProg);
 
     gl.bindBuffer(gl.ARRAY_BUFFER, water.VBO);
@@ -1449,7 +1454,7 @@ function drawSimulation() {
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, water.IBO);
     gl.drawElements(gl.TRIANGLES, water.IBO.numItems, gl.UNSIGNED_SHORT, 0);
 
-    //------------------------ after rendering-----------------------------------------
+    //------------------------------after rendering------------------------------
     gl.disableVertexAttribArray(simulateProg.vertexPositionAttribute);
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
@@ -1471,7 +1476,7 @@ function drawInteraction() {
     // resize viewport
     gl.viewport(0, 0, textureSize, textureSize);
 
-    //-------------------start rendering to texture--------------------------------------
+    //------------------------------start rendering to texture------------------------------
     gl.useProgram(objectProg);
 
     gl.bindBuffer(gl.ARRAY_BUFFER, water.VBO);
@@ -1489,7 +1494,7 @@ function drawInteraction() {
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, water.IBO);
     gl.drawElements(gl.TRIANGLES, water.IBO.numItems, gl.UNSIGNED_SHORT, 0);
 
-    //---------------------------- after rendering-------------------------------------
+    //------------------------------after rendering------------------------------
     gl.disableVertexAttribArray(objectProg.vertexPositionAttribute);
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
@@ -1531,7 +1536,7 @@ function drawDepth(colTexture, depTexture, modelView, proj, model, renderColor, 
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, model.IBO);
     gl.drawElements(gl.TRIANGLES, model.IBO.numItems, gl.UNSIGNED_SHORT, 0);
 
-    //----------------------------- after rendering------------------------------------
+    //------------------------------after rendering------------------------------
     gl.disableVertexAttribArray(depthProg.vertexPositionAttribute);
     gl.disableVertexAttribArray(depthProg.vertexNormalAttribute);
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
@@ -1548,7 +1553,7 @@ function drawWind() {
     // resize viewport
     gl.viewport(0, 0, textureSize, textureSize);
 
-    //-------------------start rendering to texture--------------------------------------
+    //------------------------------start rendering to texture------------------------------
     gl.useProgram(windProg);
 
     gl.bindBuffer(gl.ARRAY_BUFFER, water.VBO);
@@ -1575,7 +1580,7 @@ function drawWind() {
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, water.IBO);
     gl.drawElements(gl.TRIANGLES, water.IBO.numItems, gl.UNSIGNED_SHORT, 0);
 
-    //---------------------------- after rendering-------------------------------------
+    //------------------------------after rendering------------------------------
     gl.disableVertexAttribArray(windProg.vertexPositionAttribute);
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);

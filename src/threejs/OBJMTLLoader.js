@@ -268,11 +268,11 @@ THREE.OBJMTLLoader.prototype = {
 			} else if (/^s /.test(line)) {
 				// Smooth shading
 			} else {
-				console.log("THREE.OBJMTLLoader: Unhandled line " + line);
+				console.log("THREE.OBJMTLLoader: Unhandled line, " + line);
 			}
 		}
 
-		//Add last object
+		// Add last object
 		meshN(undefined, undefined);
 
 		return group;
