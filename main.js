@@ -731,9 +731,24 @@ function initBuffers(model, primitive) {
     model.IBO.numItems = primitive.numIndices;
 }
 
-function initObjs() {
+function changeObj() {
+    if (objInput1.checked) {
+        isSphere = 1;
+        webGLStart();
+    }
+    else if (objInput2.checked) {
+        isSphere = 0;
+        objRaw = loadObj("img/obj/duck.obj");
+        webGLStart();
+    }
+    else if (objInput3.checked) {
+        isSphere = 0;
+        objRaw = loadObj("img/obj/apple.obj");
+        webGLStart();
+    }
+}
 
-    // objRaw = loadObj("img/obj/apple.obj");
+function initObjs() {
     objRaw = loadObj("img/obj/duck.obj");
 
     objRaw.addCallback(function () {
@@ -775,7 +790,6 @@ function initObjs() {
 
     objRaw.executeCallBackFunc();
     registerAsyncObj(gl, objRaw);
-
 }
 
 function handleMouseDown(event) {
@@ -862,7 +876,6 @@ function startInteraction(x, y) {
 }
 
 function duringInterction(x, y) {
-
     var ray = vec3.create();
     ray = rayEyeToPixel(x, y);
     if (mode == 0) {// direct mouse interaction
@@ -929,6 +942,14 @@ function drawScene() {
     } else {
         sphere.radius = 0.23;
     }
+
+    let objInput1, objInput2, objInput3;
+    objInput1 = document.getElementById("obj-input-1");
+    objInput1.onchange = changeObj;
+    objInput2 = document.getElementById("obj-input-2");
+    objInput2.onchange = changeObj;
+    objInput3 = document.getElementById("obj-input-3");
+    objInput3.onchange = changeObj;
 
     if (parameters.Pool_Pattern == "pearl" && currentPoolPattern != "pearl") {
         initTexture(pool.Texture, "img/tile/tile1.jpg");
@@ -1085,7 +1106,6 @@ function drawQuad(texture, mode) {
 }
 
 function drawPool() {
-
     if (parameters.God_rays == true) initFrameBuffer(finalrenderTexture, null, gl.viewportWidth, gl.viewportHeight);
 
     gl.enable(gl.DEPTH_TEST);
@@ -1174,7 +1194,6 @@ function drawSkyBox() {
 }
 
 function drawObj(model) {
-
     if (parameters.God_rays == true) initFrameBuffer(finalrenderTexture, finaldepthTexture, gl.viewportWidth, gl.viewportHeight);
 
     gl.useProgram(objProg);
@@ -1352,7 +1371,6 @@ function drawWater() {
 }
 
 function drawHeight(x, y, radius, strength) {// TextureA as input, TextureB as output
-
     x = x || 0;
     y = y || 0;
     radius = radius || 0.03;
@@ -1398,7 +1416,6 @@ function drawHeight(x, y, radius, strength) {// TextureA as input, TextureB as o
 }
 
 function drawCaustic() {
-
     initFrameBuffer(water.TextureC, null, textureSize2, textureSize2);
 
     gl.viewport(0, 0, textureSize2, textureSize2);
@@ -1470,7 +1487,6 @@ function drawNormal() {
 }
 
 function drawSimulation() {
-
     initFrameBuffer(water.TextureB, null, textureSize, textureSize);
     // resize viewport
     gl.viewport(0, 0, textureSize, textureSize);
@@ -1508,7 +1524,6 @@ function drawSimulation() {
 }
 
 function drawInteraction() {
-
     initFrameBuffer(water.TextureB, null, textureSize, textureSize);
     // resize viewport
     gl.viewport(0, 0, textureSize, textureSize);
@@ -1585,7 +1600,6 @@ function drawDepth(colTexture, depTexture, modelView, proj, model, renderColor, 
 }
 
 function drawWind() {
-
     initFrameBuffer(water.TextureB, null, textureSize, textureSize);
     // resize viewport
     gl.viewport(0, 0, textureSize, textureSize);
