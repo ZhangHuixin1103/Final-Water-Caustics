@@ -943,14 +943,6 @@ function drawScene() {
         sphere.radius = 0.23;
     }
 
-    let objInput1, objInput2, objInput3;
-    objInput1 = document.getElementById("obj-input-1");
-    objInput1.onchange = changeObj;
-    objInput2 = document.getElementById("obj-input-2");
-    objInput2.onchange = changeObj;
-    objInput3 = document.getElementById("obj-input-3");
-    objInput3.onchange = changeObj;
-
     if (parameters.Pool_Pattern == "pearl" && currentPoolPattern != "pearl") {
         initTexture(pool.Texture, "img/tile/tile1.jpg");
         currentPoolPattern = "pearl";
@@ -2016,4 +2008,16 @@ function webGLStart() {
 
     check();
     // tick();
+}
+
+function reStart() {
+    webGLStart();
+
+    let objInput1, objInput2, objInput3;
+    objInput1 = document.getElementById("obj-input-1");
+    objInput1.onchange = changeObj;
+    objInput2 = document.getElementById("obj-input-2");
+    objInput2.onchange = changeObj;
+    objInput3 = document.getElementById("obj-input-3");
+    objInput3.onchange = changeObj;
 }
