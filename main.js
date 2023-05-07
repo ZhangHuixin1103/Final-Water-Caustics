@@ -731,6 +731,14 @@ function initBuffers(model, primitive) {
     model.IBO.numItems = primitive.numIndices;
 }
 
+let objInput1, objInput2, objInput3;
+objInput1 = document.getElementById("obj-input-1");
+objInput1.onchange = changeObj;
+objInput2 = document.getElementById("obj-input-2");
+objInput2.onchange = changeObj;
+objInput3 = document.getElementById("obj-input-3");
+objInput3.onchange = changeObj;
+
 function changeObj() {
     if (objInput1.checked) {
         isSphere = 1;
@@ -749,7 +757,13 @@ function changeObj() {
 }
 
 function initObjs() {
-    objRaw = loadObj("img/obj/duck.obj");
+    // objRaw = loadObj("img/obj/duck.obj");
+    if (objInput2.checked) {
+        objRaw = loadObj("img/obj/duck.obj");
+    }
+    else if (objInput3.checked) {
+        objRaw = loadObj("img/obj/apple.obj");
+    }
 
     objRaw.addCallback(function () {
         objModel = new createModel(gl, objRaw);
@@ -2008,16 +2022,4 @@ function webGLStart() {
 
     check();
     // tick();
-}
-
-function reStart() {
-    webGLStart();
-
-    let objInput1, objInput2, objInput3;
-    objInput1 = document.getElementById("obj-input-1");
-    objInput1.onchange = changeObj;
-    objInput2 = document.getElementById("obj-input-2");
-    objInput2.onchange = changeObj;
-    objInput3 = document.getElementById("obj-input-3");
-    objInput3.onchange = changeObj;
 }
