@@ -740,19 +740,19 @@ objInput3 = document.getElementById("obj-input-3");
 objInput3.onchange = changeObj;
 
 function changeObj() {
-    if (objInput1.checked) {
-        isSphere = 1;
-        webGLStart();
-    }
-    else if (objInput2.checked) {
+    //if (objInput1.checked) {
+    //    isSphere = 1;
+    //    webGLStart();
+    //}
+    if (objInput2.checked) {
         isSphere = 0;
         objRaw = loadObj("img/obj/duck.obj");
-        webGLStart();
+        initObjs();
     }
     else if (objInput3.checked) {
         isSphere = 0;
         objRaw = loadObj("img/obj/apple.obj");
-        webGLStart();
+        initObjs();
     }
 }
 
