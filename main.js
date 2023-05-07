@@ -736,12 +736,12 @@ let objInput2, objInput3;
 function changeObj() {
     if (objInput2.checked) {
         isSphere = 0;
-        // objRaw = loadObj("img/obj/duck.obj");
+        objRaw = loadObj("img/obj/duck.obj");
         webGLStart();
     }
     else if (objInput3.checked) {
         isSphere = 0;
-        // objRaw = loadObj("img/obj/apple.obj");
+        objRaw = loadObj("img/obj/apple.obj");
         webGLStart();
     }
 }
