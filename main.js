@@ -210,7 +210,7 @@ var parameters = new function () {
     this.Wind = true;
     this.Rain = false;
     this.Skybox = "blue";
-    this.Pool_Pattern = "blue brick";
+    this.Pool_Pattern = "pearl";
     this.Object = "duck";
     this.Sphere_Radius = 0.25;
     this.God_rays = false;
@@ -755,14 +755,10 @@ function changeObj() {
 }
 
 function initObjs() {
-    objInput1 = document.getElementById("obj-input-1");
     objInput2 = document.getElementById("obj-input-2");
     objInput3 = document.getElementById("obj-input-3");
 
-    if (objInput1.checked) {
-        isSphere = 1;
-    }
-    else if (objInput2.checked) {
+    if (objInput2.checked) {
         isSphere = 0;
         objRaw = loadObj("img/obj/duck.obj");
     }
