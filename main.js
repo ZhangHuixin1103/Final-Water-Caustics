@@ -733,26 +733,34 @@ function initBuffers(model, primitive) {
 
 function changeObj() {
     if (objInput1.checked) {
+        isSphere = 1;
         webGLStart();
     }
     else if (objInput2.checked) {
+        isSphere = 0;
+        objRaw = loadObj("img/obj/duck.obj");
         webGLStart();
     }
     else if (objInput3.checked) {
+        isSphere = 0;
+        objRaw = loadObj("img/obj/apple.obj");
         webGLStart();
     }
 }
 
 function initObjs() {
     if (objInput1.checked) {
-        objRaw = loadObj("img/obj/duck.obj");
+        isSphere = 1;
     }
     else if (objInput2.checked) {
+        isSphere = 0;
         objRaw = loadObj("img/obj/duck.obj");
     }
     else if (objInput3.checked) {
+        isSphere = 0;
         objRaw = loadObj("img/obj/apple.obj");
     }
+    // objRaw = loadObj("img/obj/duck.obj");
 
     objRaw.addCallback(function () {
         objModel = new createModel(gl, objRaw);
