@@ -739,31 +739,31 @@ function changeObj() {
     objInput3 = document.getElementById("obj-input-3");
 
     if (objInput1.checked) {
-        isSphere = 1;
+        objRaw = loadObj("img/obj/sphere.obj");
         webGLStart();
     }
     else if (objInput2.checked) {
-        isSphere = 0;
         objRaw = loadObj("img/obj/duck.obj");
         webGLStart();
     }
     else if (objInput3.checked) {
-        isSphere = 0;
         objRaw = loadObj("img/obj/apple.obj");
         webGLStart();
     }
 }
 
 function initObjs() {
+    objInput1 = document.getElementById("obj-input-1");
     objInput2 = document.getElementById("obj-input-2");
     objInput3 = document.getElementById("obj-input-3");
 
-    if (objInput2.checked) {
-        isSphere = 0;
+    if (objInput1.checked) {
+        objRaw = loadObj("img/obj/sphere.obj");
+    }
+    else if (objInput2.checked) {
         objRaw = loadObj("img/obj/duck.obj");
     }
     else if (objInput3.checked) {
-        isSphere = 0;
         objRaw = loadObj("img/obj/apple.obj");
     }
     // objRaw = loadObj("img/obj/duck.obj");
