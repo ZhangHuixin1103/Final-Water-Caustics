@@ -732,6 +732,9 @@ function initBuffers(model, primitive) {
 }
 
 function changeObj() {
+    objInput1 = document.getElementById("obj-input-1");
+    objInput2 = document.getElementById("obj-input-2");
+    objInput3 = document.getElementById("obj-input-3");
     if (objInput1.checked) {
         isSphere = 1;
         webGLStart();
@@ -749,6 +752,10 @@ function changeObj() {
 }
 
 function initObjs() {
+
+    objInput1 = document.getElementById("obj-input-1");
+    objInput2 = document.getElementById("obj-input-2");
+    objInput3 = document.getElementById("obj-input-3");
     if (objInput1.checked) {
         isSphere = 1;
     }
