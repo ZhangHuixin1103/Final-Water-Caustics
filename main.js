@@ -209,7 +209,7 @@ var parameters = new function () {
     this.Caustic = true;
     this.Wind = true;
     this.Rain = false;
-    this.Skybox = "classic";
+    this.Skybox = "blue";
     this.Pool_Pattern = "blue brick";
     this.Object = "duck";
     this.Sphere_Radius = 0.25;
@@ -730,6 +730,8 @@ function initBuffers(model, primitive) {
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(primitive.indices), gl.STATIC_DRAW);
     model.IBO.numItems = primitive.numIndices;
 }
+
+let objInput1, objInput2, objInput3;
 
 function changeObj() {
     if (objInput1.checked) {
@@ -2024,7 +2026,6 @@ function webGLStart() {
 function reStart() {
     webGLStart();
 
-    let objInput1, objInput2, objInput3;
     objInput1 = document.getElementById("obj-input-1");
     objInput1.onchange = changeObj;
     objInput2 = document.getElementById("obj-input-2");
