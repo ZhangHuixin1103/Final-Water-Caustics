@@ -209,7 +209,7 @@ var parameters = new function () {
     this.Caustic = true;
     this.Wind = true;
     this.Rain = false;
-    this.Skybox = "classic";
+    this.Skybox = "blue";
     this.Pool_Pattern = "pearl";
     this.Object = "duck";
     this.Sphere_Radius = 0.25;
@@ -731,10 +731,42 @@ function initBuffers(model, primitive) {
     model.IBO.numItems = primitive.numIndices;
 }
 
-function initObjs() {
+let objInput1, objInput2, objInput3;
 
-    // objRaw = loadObj("img/obj/apple.obj");
-    objRaw = loadObj("img/obj/duck.obj");
+function changeObj() {
+    objInput1 = document.getElementById("obj-input-1");
+    objInput2 = document.getElementById("obj-input-2");
+    objInput3 = document.getElementById("obj-input-3");
+
+    if (objInput1.checked) {
+        objRaw = loadObj("img/obj/sphere.obj");
+        webGLStart();
+    }
+    else if (objInput2.checked) {
+        objRaw = loadObj("img/obj/duck.obj");
+        webGLStart();
+    }
+    else if (objInput3.checked) {
+        objRaw = loadObj("img/obj/apple.obj");
+        webGLStart();
+    }
+}
+
+function initObjs() {
+    objInput1 = document.getElementById("obj-input-1");
+    objInput2 = document.getElementById("obj-input-2");
+    objInput3 = document.getElementById("obj-input-3");
+
+    if (objInput1.checked) {
+        objRaw = loadObj("img/obj/sphere.obj");
+    }
+    else if (objInput2.checked) {
+        objRaw = loadObj("img/obj/duck.obj");
+    }
+    else if (objInput3.checked) {
+        objRaw = loadObj("img/obj/apple.obj");
+    }
+    // objRaw = loadObj("img/obj/duck.obj");
 
     objRaw.addCallback(function () {
         objModel = new createModel(gl, objRaw);
@@ -775,7 +807,6 @@ function initObjs() {
 
     objRaw.executeCallBackFunc();
     registerAsyncObj(gl, objRaw);
-
 }
 
 function handleMouseDown(event) {
@@ -862,7 +893,6 @@ function startInteraction(x, y) {
 }
 
 function duringInterction(x, y) {
-
     var ray = vec3.create();
     ray = rayEyeToPixel(x, y);
     if (mode == 0) {// direct mouse interaction
@@ -1085,7 +1115,6 @@ function drawQuad(texture, mode) {
 }
 
 function drawPool() {
-
     if (parameters.God_rays == true) initFrameBuffer(finalrenderTexture, null, gl.viewportWidth, gl.viewportHeight);
 
     gl.enable(gl.DEPTH_TEST);
@@ -1174,7 +1203,6 @@ function drawSkyBox() {
 }
 
 function drawObj(model) {
-
     if (parameters.God_rays == true) initFrameBuffer(finalrenderTexture, finaldepthTexture, gl.viewportWidth, gl.viewportHeight);
 
     gl.useProgram(objProg);
@@ -1352,7 +1380,6 @@ function drawWater() {
 }
 
 function drawHeight(x, y, radius, strength) {// TextureA as input, TextureB as output
-
     x = x || 0;
     y = y || 0;
     radius = radius || 0.03;
@@ -1398,7 +1425,6 @@ function drawHeight(x, y, radius, strength) {// TextureA as input, TextureB as o
 }
 
 function drawCaustic() {
-
     initFrameBuffer(water.TextureC, null, textureSize2, textureSize2);
 
     gl.viewport(0, 0, textureSize2, textureSize2);
@@ -1470,7 +1496,6 @@ function drawNormal() {
 }
 
 function drawSimulation() {
-
     initFrameBuffer(water.TextureB, null, textureSize, textureSize);
     // resize viewport
     gl.viewport(0, 0, textureSize, textureSize);
@@ -1508,7 +1533,6 @@ function drawSimulation() {
 }
 
 function drawInteraction() {
-
     initFrameBuffer(water.TextureB, null, textureSize, textureSize);
     // resize viewport
     gl.viewport(0, 0, textureSize, textureSize);
@@ -1585,7 +1609,6 @@ function drawDepth(colTexture, depTexture, modelView, proj, model, renderColor, 
 }
 
 function drawWind() {
-
     initFrameBuffer(water.TextureB, null, textureSize, textureSize);
     // resize viewport
     gl.viewport(0, 0, textureSize, textureSize);
@@ -2002,4 +2025,15 @@ function webGLStart() {
 
     check();
     // tick();
+}
+
+function reStart() {
+    webGLStart();
+
+    objInput1 = document.getElementById("obj-input-1");
+    objInput1.onchange = changeObj;
+    objInput2 = document.getElementById("obj-input-2");
+    objInput2.onchange = changeObj;
+    objInput3 = document.getElementById("obj-input-3");
+    objInput3.onchange = changeObj;
 }
